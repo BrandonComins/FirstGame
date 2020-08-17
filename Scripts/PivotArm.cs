@@ -25,17 +25,17 @@ public class PivotArm : MonoBehaviour
 
     	transform.rotation = Quaternion.Euler(0f,0f,rotationZ);
 
-    	// Prevent arm from being upsidedown when facing opposite direction of player
-    	if(rotationZ < -90 || rotationZ > 90){
+    	// Prevent arm from being upsidedown when player changes direction
+  //   	if(rotationZ < -90 || rotationZ > 90){
 
-			if(myPlayer.transform.eulerAngles.y == 0){
-				transform.localRotation = Quaternion.Euler(180, 0, -rotationZ);
+		// 	if(myPlayer.transform.eulerAngles.y == 0){
+		// 		transform.localRotation = Quaternion.Euler(180, 0, -rotationZ);
 
-				}
+		// 		}
 
-			else if(myPlayer.transform.eulerAngles.y == 180){
-				transform.localRotation = Quaternion.Euler(180, 180, -rotationZ);
-			}
-		}
+		// 	else if(myPlayer.transform.eulerAngles.y == 180){
+		// 		transform.localRotation = Quaternion.Euler(180, 180, -rotationZ);
+		// 	}
+		// }
     }
 }

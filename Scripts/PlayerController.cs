@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour {
 	public float fallMultiplyer = 2.5f;
 	public float lowJumpMultiplyer = 2f;
 
+	private bool canDoubleJump;
+
 	private Rigidbody2D rb;
 	private BoxCollider2D col;
 
@@ -24,31 +26,41 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update(){
-    	if(Input.GetKey("space") && isGrounded()) {
+    	if(isGrounded()){
+    		canDoubleJump = true;
+    	}
 
- 			rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-
- 			// Hold to jump Higher (gravity is no longer constant)
-
- 			if (rb.velocity.y < 0){
- 				rb.velocity+= Vector2.up*Physics2D.gravity.y * (fallMultiplyer - 1) * Time.deltaTime;
-
-				}
- 		
- 			else if (rb.velocity.y > 0 && !Input.GetButton ("Jump")){
-
- 					rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplyer - 1) * Time.deltaTime;
-
- 				}
+    	if(Input.GetKey("space")) {
+    		if(isGrounded()){
+ 				rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+ 				
+ 				}else{
+ 						//Key must be pressed twice to jump in air.
+ 					if(Input.GetKeyDown(KeyCode.Space)){
+ 						if(canDoubleJump){
+ 							rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+ 							canDoubleJump = false;
+ 						}
+ 					}
+    			}
     		}
     	}
 
-
  	void FixedUpdate(){
- 			
  			handleMovement();
 
- 		}
+ 			// Hold to jump Higher (gravity is no longer constant)
+ 			// if (rb.velocity.y < 0){
+ 			// 	rb.velocity+= Vector2.up*Physics2D.gravity.y * (fallMultiplyer - 1) * Time.deltaTime;
+
+				// }
+ 		
+ 			// else if (rb.velocity.y > 0 && !Input.GetButton ("Jump")){
+
+ 			// 		rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplyer - 1) * Time.deltaTime;
+
+ 		// }
+ 	}
 
  	//Collect Coins
  	private void OnTriggerEnter2D(Collider2D col){
