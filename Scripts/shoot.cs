@@ -27,6 +27,6 @@ public float bulletForce = 20f;
     void Shoot(){
     	GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     	Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-    	rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+    	rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
     }
 }
