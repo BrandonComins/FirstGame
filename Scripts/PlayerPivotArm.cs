@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PivotArm : MonoBehaviour
+public class PlayerPivotArm : MonoBehaviour
 {
     
     public GameObject myPlayer;
 
-    void Start()
-    {
+    void Start(){
         
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update(){
         
     }
 
