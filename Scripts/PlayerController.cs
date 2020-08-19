@@ -22,6 +22,14 @@ public class PlayerController : MonoBehaviour {
 	public int currentHealth;
 	public HealthBar healthBar;
 
+	public float dashSpeed;
+	private float dashTime;
+	public float startDashTime;
+	private bool isDashing = false;
+	private int lastDirection = 0;
+
+
+
 	[SerializeField] public LayerMask groundLayer;
 	
 
@@ -30,6 +38,8 @@ public class PlayerController : MonoBehaviour {
 		// Starts character with max health
 		currentHealth = maxHealth;
 		healthBar.setMaxHealth(maxHealth);
+
+		dashTime = startDashTime;
 	}
 
     void Awake() {
@@ -40,12 +50,16 @@ public class PlayerController : MonoBehaviour {
 
     void Update(){
     		jump();
-    		// dash();
     		die();
+    		dash();
+    		handleMovement();
+
     	}
 
  	void FixedUpdate(){
- 			handleMovement();
+ 			
+ 			
+ 			
 
  			//Hold to jump Higher (gravity is no longer constant)
  			if (rb.velocity.y < 0){
@@ -77,22 +91,27 @@ public class PlayerController : MonoBehaviour {
 
 	private void handleMovement(){
 		if (Input.GetKey("d")) {
+			//move right (positive direction)
 			if(isGrounded()){
  				rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
  			}else{
+ 				//move right at reduced speed if in air
  				rb.velocity += new Vector2(moveSpeed * Time.deltaTime, 0);
  				rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -moveSpeed, moveSpeed), rb.velocity.y);
  		}
+ 			lastDirection = 1;
  	}
 
  		else if (Input.GetKey("a")){
+ 				//move left (negative direction)
  				if(isGrounded()){
  					rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
  				}else{
+ 					//move left at reduced speed if in air
  					rb.velocity += new Vector2(-moveSpeed * Time.deltaTime, 0);
  					rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -moveSpeed, moveSpeed), rb.velocity.y);
  				}
- 			
+ 				lastDirection = -1;
  		}else{
  			//no keys pressed
  			if(isGrounded()){
@@ -140,10 +159,37 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		// private void dash(){
-		// 	if(Input.GetKey(KeyCode.LeftShift)){
-				
-		// 	}
-		// }
+		private void dash(){
+			// Debug.Log("Are you Dashing? " + isDashing);
+			Debug.Log("What is your Dash Time? " + dashTime);
+			// Debug.Log("What was your Last Direction? " + lastDirection);
+			// Debug.Log("The Start Dash Time: " + startDashTime);
+				if(dashTime <= 0){
+					dashTime = startDashTime;
+					isDashing = false;
+					Debug.Log("RESET TIME!");
+				}
 
-	}
+				if(Input.GetKeyDown("left shift")){
+					Debug.Log("DASH!");
+
+					// if(isDashing == false){
+						if(dashTime > 0){
+							if(lastDirection == 1 || lastDirection == 0){
+								rb.velocity = Vector2.right * dashSpeed;
+								// isDashing = true;
+								dashTime -= Time.deltaTime;
+								Debug.Log("Dashing right");
+							}
+							else if(lastDirection == -1){
+								rb.velocity = Vector2.left * dashSpeed;
+								// isDashing = true;
+								dashTime -= Time.deltaTime;
+								Debug.Log("Dashing Left");
+							}		
+						}
+					// }
+				}	
+			}
+		}
+	
