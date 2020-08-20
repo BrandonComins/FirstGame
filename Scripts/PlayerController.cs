@@ -81,13 +81,12 @@ public class PlayerController : MonoBehaviour {
  	//Collect Coins
  	private void OnTriggerEnter2D(Collider2D col){
 
-		int coins_collected = 0;
-		if(col.gameObject.CompareTag("coin")){
-			Destroy(col.gameObject);
-			coins_collected++;
+		// int coins_collected = 0;
+		// if(col.gameObject.CompareTag("coin")){
+		// 	Destroy(col.gameObject);
+		// 	coins_collected++;
 
-
-		}
+		// }
 
 	}
 

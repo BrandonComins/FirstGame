@@ -2,18 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shoot : MonoBehaviour
-{
+public class shoot : MonoBehaviour {
 
 public Transform firePoint;
 public GameObject bulletPrefab;
 
-
-
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update(){
