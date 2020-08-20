@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class EnemyProperties : MonoBehaviour {
    
-   	public int health = 3;
-  
+    public int health = 3;
+      
+	private Rigidbody2D rb;
+
+    public void update(){
+    
+	
+	}
+
+	void Awake(){
+		rb = transform.GetComponent<Rigidbody2D>();
+		
+	}
 
    	public void takeDamage(int damage){
    		health -= damage;
@@ -15,8 +26,9 @@ public class EnemyProperties : MonoBehaviour {
    		}
    	}
 
-   private void die(){
+      private void die(){
    		Destroy(gameObject);
-   	}
+   	}  
 }
+      
     

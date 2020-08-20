@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour {
 	public float dashSpeed;
 	private float dashTime;
 	public float startDashTime;
-	private bool isDashing = false;
-	private int lastDirection = 0;
+	private int direction;
+	private float moveInput;
 
 
 
@@ -40,19 +40,23 @@ public class PlayerController : MonoBehaviour {
 		healthBar.setMaxHealth(maxHealth);
 
 		dashTime = startDashTime;
+		
 	}
 
     void Awake() {
     	rb = transform.GetComponent<Rigidbody2D>();
     	col = transform.GetComponent<BoxCollider2D>();
+		
       
     }
 
     void Update(){
+    		moveInput = Input.GetAxis("Horizontal");
     		jump();
     		die();
-    		dash();
+    		// dash();
     		handleMovement();
+
 
     	}
 
@@ -76,13 +80,26 @@ public class PlayerController : MonoBehaviour {
 
  	//Collect Coins
  	private void OnTriggerEnter2D(Collider2D col){
+
 		int coins_collected = 0;
 		if(col.gameObject.CompareTag("coin")){
 			Destroy(col.gameObject);
 			coins_collected++;
+
+
 		}
 
 	}
+
+
+	
+	private void OnCollisionEnter2D(Collision2D other) {
+		if(other.gameObject.tag == "Enemy"){
+			takeDamage(20);
+			rb.AddForce(new Vector2(-10,15),ForceMode2D.Impulse);
+		}
+	}
+	
 
 	bool isGrounded(){
 		RaycastHit2D raycast = Physics2D.BoxCast(col.bounds.center, col.bounds.size, 0f, Vector2.down, .1f, groundLayer);
@@ -99,7 +116,7 @@ public class PlayerController : MonoBehaviour {
  				rb.velocity += new Vector2(moveSpeed * Time.deltaTime, 0);
  				rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -moveSpeed, moveSpeed), rb.velocity.y);
  		}
- 			lastDirection = 1;
+ 		
  	}
 
  		else if (Input.GetKey("a")){
@@ -111,7 +128,7 @@ public class PlayerController : MonoBehaviour {
  					rb.velocity += new Vector2(-moveSpeed * Time.deltaTime, 0);
  					rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -moveSpeed, moveSpeed), rb.velocity.y);
  				}
- 				lastDirection = -1;
+ 				
  		}else{
  			//no keys pressed
  			if(isGrounded()){
@@ -148,7 +165,7 @@ public class PlayerController : MonoBehaviour {
     		}
 		}
 
-		void takeDamage(int damage){
+		public void takeDamage(int damage){
 			currentHealth -= damage;
 			healthBar.setHealth(currentHealth);
 		}
@@ -159,37 +176,37 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		private void dash(){
-			// Debug.Log("Are you Dashing? " + isDashing);
-			Debug.Log("What is your Dash Time? " + dashTime);
-			// Debug.Log("What was your Last Direction? " + lastDirection);
-			// Debug.Log("The Start Dash Time: " + startDashTime);
-				if(dashTime <= 0){
-					dashTime = startDashTime;
-					isDashing = false;
-					Debug.Log("RESET TIME!");
-				}
+		
 
-				if(Input.GetKeyDown("left shift")){
-					Debug.Log("DASH!");
+		// private void dash(){
 
-					// if(isDashing == false){
-						if(dashTime > 0){
-							if(lastDirection == 1 || lastDirection == 0){
-								rb.velocity = Vector2.right * dashSpeed;
-								// isDashing = true;
-								dashTime -= Time.deltaTime;
-								Debug.Log("Dashing right");
-							}
-							else if(lastDirection == -1){
-								rb.velocity = Vector2.left * dashSpeed;
-								// isDashing = true;
-								dashTime -= Time.deltaTime;
-								Debug.Log("Dashing Left");
-							}		
-						}
-					// }
-				}	
-			}
-		}
+		// 		if(direction == 0){
+		// 			if(Input.GetKeyDown("left shift")){
+		// 				if(moveInput < 0){
+		// 					direction = 1;
+		// 				}
+		// 				else if (moveInput > 0){
+		// 					direction = 2;
+		// 			}else{
+		// 					if(dashTime <= 0){
+		// 						direction = 0;
+		// 						dashTime = startDashTime;
+		// 						rb.velocity = Vector2.zero;
+		// 					}else{
+		// 						dashTime -= Time.deltaTime;
+		// 						if (direction == 1){
+		// 							rb.velocity = Vector2.left * dashSpeed;
+		// 							Debug.Log("Dashing");
+		// 						}
+		// 						else if(direction == 2){
+		// 							rb.velocity = Vector2.right * dashSpeed;
+		// 							Debug.Log("Dashing");
+		// 						}
+		// 					}
+		// 			}
+		// 		}
+		// 	}
+		// }
 	
+	
+}
