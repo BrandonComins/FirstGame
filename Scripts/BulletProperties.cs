@@ -7,18 +7,14 @@ public class BulletProperties : MonoBehaviour
     
     public Rigidbody2D rb;
     public float speed = 20f;
+    public int damage = 20;
 
-    void Start()
-    {
+    void Start(){
     	rb.velocity = transform.right * speed;
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     void OnTriggerEnter2D(Collider2D hitInfo){
     	
@@ -28,13 +24,11 @@ public class BulletProperties : MonoBehaviour
         }
 
         PlayerController player = hitInfo.GetComponent<PlayerController>();
-            if(player != null){
-                player.takeDamage(20);
-               
+        if(player != null){
+            player.takeDamage(20);
+
             }
-
     	
-
 
     	Destroy(gameObject);
 

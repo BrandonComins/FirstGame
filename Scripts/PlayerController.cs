@@ -78,18 +78,6 @@ public class PlayerController : MonoBehaviour {
  		}
  	}
 
- 	//Collect Coins
- 	private void OnTriggerEnter2D(Collider2D col){
-
-		// int coins_collected = 0;
-		// if(col.gameObject.CompareTag("coin")){
-		// 	Destroy(col.gameObject);
-		// 	coins_collected++;
-
-		// }
-
-	}
-
 
 	
 	private void OnCollisionEnter2D(Collision2D other) {
@@ -168,6 +156,10 @@ public class PlayerController : MonoBehaviour {
 		public void takeDamage(int damage){
 			currentHealth -= damage;
 			healthBar.setHealth(currentHealth);
+
+			if (currentHealth > maxHealth){
+				currentHealth = maxHealth;
+			}
 		}
 
 		private void die(){

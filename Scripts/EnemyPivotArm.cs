@@ -9,9 +9,8 @@ public class EnemyPivotArm : MonoBehaviour
     public Transform player;
 
 
-    void Start() {
-       this.player = GameObject.FindWithTag("Player").transform;
-       
+    void Update() {
+  
     }
 
 

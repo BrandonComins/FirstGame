@@ -9,7 +9,6 @@ public class EnemyShoot : MonoBehaviour {
     float timeRemaining;
 
     float maxTime = 1.5f;
-    bool canShoot = true;
 
     void Start(){
         timeRemaining = maxTime;
