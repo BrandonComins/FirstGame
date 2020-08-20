@@ -9,6 +9,7 @@ public class EnemyShoot : MonoBehaviour {
     float timeRemaining;
 
     float maxTime = 1.5f;
+    public Transform player;
 
     void Start(){
         timeRemaining = maxTime;
@@ -24,8 +25,9 @@ public class EnemyShoot : MonoBehaviour {
         
 
     void Shoot(){
+        if(player != null){
     	GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-    	
+        }
     }
 
 }
