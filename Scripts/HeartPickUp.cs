@@ -6,15 +6,7 @@ public class HeartPickUp : MonoBehaviour {
 
 private int healthGiven = -20;
 
-
-EnemyProperties enemy;
 PlayerController player;
-
-BulletProperties bullet;
-
-HeartPickUp heart;
-
-
 
 void Awake(){
     player = FindObjectOfType<PlayerController>();
