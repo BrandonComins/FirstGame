@@ -332,7 +332,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: dab7f4b1613ba074fb59cf68282a3fd9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ecc049839e4db7e49bc8607b87030303, type: 3}
   m_Color: {r: 0.9622642, g: 0.27491578, b: 0.19517623, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  player: {fileID: 0}
+  player: {fileID: 50909998}
 --- !u!1 &274536452
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +778,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: dab7f4b1613ba074fb59cf68282a3fd9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ecc049839e4db7e49bc8607b87030303, type: 3}
   m_Color: {r: 0.9622642, g: 0.27491578, b: 0.19517623, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1432,7 +1432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608397220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.76, y: 0.12, z: 0}
+  m_LocalPosition: {x: 0.76, y: 0.03, z: 0}
   m_LocalScale: {x: 0.6330806, y: 0.5342394, z: 0.49806684}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1850,8 +1850,9 @@ GameObject:
   - component: {fileID: 1177947591}
   - component: {fileID: 1177947590}
   - component: {fileID: 1177947589}
-  - component: {fileID: 1177947588}
   - component: {fileID: 1177947592}
+  - component: {fileID: 1177947588}
+  - component: {fileID: 1177947593}
   m_Layer: 0
   m_Name: heart
   m_TagString: HeartPickup
@@ -1859,8 +1860,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &1177947588
-BoxCollider2D:
+--- !u!58 &1177947588
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1873,18 +1874,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.09, y: 1.96}
-    newSize: {x: 2.09, y: 1.96}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.09, y: 1.96}
-  m_EdgeRadius: 0
+  m_Radius: 1.045
 --- !u!50 &1177947589
 Rigidbody2D:
   serializedVersion: 4
@@ -1964,7 +1955,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177947587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.48, y: 1.38, z: 0}
+  m_LocalPosition: {x: -7.77, y: -2.31, z: 0}
   m_LocalScale: {x: 0.36648527, y: 0.36648527, z: 0.36648527}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1982,6 +1973,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f78ed56b36b58e468e711c10174e9af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1177947593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177947587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b381c876d89b4974dbda616dd70d23f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heart: {fileID: 1177947587}
+  bullet: {fileID: 6235671807398962751, guid: e264172ab5b871343a4b8bfa7afd23d4, type: 3}
+  enemy: {fileID: 2123912463}
 --- !u!1 &1392277330
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,7 +2535,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: dab7f4b1613ba074fb59cf68282a3fd9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ecc049839e4db7e49bc8607b87030303, type: 3}
   m_Color: {r: 0.9622642, g: 0.27491578, b: 0.19517623, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2667,7 +2673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  player: {fileID: 0}
+  player: {fileID: 50909998}
 --- !u!1 &2053790262
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,7 +2719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  player: {fileID: 0}
+  player: {fileID: 50909998}
 --- !u!1 &2103429817
 GameObject:
   m_ObjectHideFlags: 0
