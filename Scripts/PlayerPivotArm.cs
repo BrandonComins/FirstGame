@@ -5,16 +5,7 @@ using UnityEngine;
 public class PlayerPivotArm : MonoBehaviour
 {
     
-    public GameObject myPlayer;
-
-    void Start(){
-        
-    }
-
-    // Update is called once per frame
-    void Update(){
-        
-    }
+    // public GameObject myPlayer;
 
     private void FixedUpdate(){
     	Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;

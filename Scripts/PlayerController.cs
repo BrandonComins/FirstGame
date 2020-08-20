@@ -97,6 +97,7 @@ public class PlayerController : MonoBehaviour {
 		if(other.gameObject.tag == "Enemy"){
 			takeDamage(20);
 			rb.AddForce(new Vector2(-10,15),ForceMode2D.Impulse);
+			canDoubleJump = true;
 		}
 	}
 	

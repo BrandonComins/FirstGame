@@ -7,7 +7,7 @@ public class BulletProperties : MonoBehaviour
     
     public Rigidbody2D rb;
     public float speed = 20f;
-    public int damage = 2;
+    public int damage = 20;
 
     void Start()
     {
@@ -26,7 +26,14 @@ public class BulletProperties : MonoBehaviour
     	EnemyProperties enemy = hitInfo.GetComponent<EnemyProperties>();
     	if (enemy != null){
     		enemy.takeDamage(damage);
-    	}
+        }
+
+        PlayerController player = hitInfo.GetComponent<PlayerController>();
+            if(player != null){
+                player.takeDamage(damage);
+            }
+
+    	
 
 
     	Destroy(gameObject);
