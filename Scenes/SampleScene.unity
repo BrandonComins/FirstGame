@@ -246,6 +246,7 @@ MonoBehaviour:
   firePoint: {fileID: 122070590}
   bulletPrefab: {fileID: 6235671807398962751, guid: e264172ab5b871343a4b8bfa7afd23d4,
     type: 3}
+  player: {fileID: 50909998}
 --- !u!61 &6076150
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -371,9 +372,9 @@ GameObject:
   - component: {fileID: 50909998}
   - component: {fileID: 50909997}
   - component: {fileID: 50909996}
-  - component: {fileID: 50909999}
   - component: {fileID: 50910000}
   - component: {fileID: 50909995}
+  - component: {fileID: 50909999}
   m_Layer: 14
   m_Name: Player
   m_TagString: Player
@@ -505,8 +506,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1529111211}
-  bulletPrefab: {fileID: 6235671807398962751, guid: e264172ab5b871343a4b8bfa7afd23d4,
+  bulletPrefab: {fileID: 6235671807398962751, guid: 2dfc2888c2fda664cb82805fedff2aff,
     type: 3}
+  gunEquiped: 0
 --- !u!61 &50910000
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -840,6 +842,7 @@ MonoBehaviour:
   firePoint: {fileID: 912266675}
   bulletPrefab: {fileID: 6235671807398962751, guid: e264172ab5b871343a4b8bfa7afd23d4,
     type: 3}
+  player: {fileID: 50909998}
 --- !u!1 &412740450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,6 +2315,7 @@ MonoBehaviour:
   firePoint: {fileID: 274536453}
   bulletPrefab: {fileID: 6235671807398962751, guid: e264172ab5b871343a4b8bfa7afd23d4,
     type: 3}
+  player: {fileID: 50909998}
 --- !u!61 &1557536687
 BoxCollider2D:
   m_ObjectHideFlags: 0
