@@ -9,17 +9,17 @@ public GameObject bulletPrefab;
 
 public float nextTimeToFire= 0f;
 
+public static gun gunEquiped;
+
 public enum gun{
     pistol, revolver, assaultRifle, shotgun, rocketLauncher
 }
-
-public gun gunEquiped;
 
 
 
     
      void Start(){
-        gunEquiped = gun.shotgun;
+        gunEquiped = gun.pistol;
  
      }
         
@@ -56,7 +56,6 @@ public gun gunEquiped;
 
     public void shoot(){
     	if(gunEquiped == gun.pistol){
-            Debug.Log(gunEquiped);
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         }
 

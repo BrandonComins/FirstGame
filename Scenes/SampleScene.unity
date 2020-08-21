@@ -508,7 +508,7 @@ MonoBehaviour:
   firePoint: {fileID: 1529111211}
   bulletPrefab: {fileID: 6235671807398962751, guid: 2dfc2888c2fda664cb82805fedff2aff,
     type: 3}
-  gunEquiped: 0
+  nextTimeToFire: 0
 --- !u!61 &50910000
 BoxCollider2D:
   m_ObjectHideFlags: 0

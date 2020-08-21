@@ -40,7 +40,7 @@ public class EnemyProperties : MonoBehaviour {
    	}  
 
 	private void dropHealth(){
-		if(healthDropChance <= .2f){
+		if(healthDropChance <= .1f){
 			GameObject heart = Instantiate(heartPrefab, enemy.position, enemy.rotation);
 		}
 	}

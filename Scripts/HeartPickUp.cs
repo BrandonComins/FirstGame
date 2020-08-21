@@ -13,8 +13,6 @@ void Awake(){
 }
 private void OnTriggerEnter2D(Collider2D hitInfo) {
 
-    
-
        if(hitInfo.gameObject.tag == "Player"){
             player.takeDamage(healthGiven);
             Destroy(this.gameObject);
