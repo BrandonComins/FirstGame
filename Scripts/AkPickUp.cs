@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AkPickUp : MonoBehaviour {
 
@@ -10,10 +11,6 @@ private bool pickUpAllowed;
 
 public SpriteRenderer playerGun;
 public Sprite ak;
-
-void start(){
-
-}
 
 void Update(){
     if(pickUpAllowed && Input.GetKeyDown("e")){

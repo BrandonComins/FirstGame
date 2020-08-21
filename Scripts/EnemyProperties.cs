@@ -10,7 +10,6 @@ public class EnemyProperties : MonoBehaviour {
 	
     public int health = 40;
 
-      
 	private Rigidbody2D rb;
 
 
